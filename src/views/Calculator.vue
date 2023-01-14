@@ -1,11 +1,37 @@
 <script setup>
-    import { ref,computed } from "vue";
+    import { ref } from "vue";
     const num1 = ref('')
     const num2 = ref('')
 
-    const total = ref('')
+    const total =ref('')
 
-   
+    const calculate = (get) => {
+        switch (get) {
+            case 'plus':
+                total.value = num1.value + num2.value
+                break;
+            
+            case 'minus':
+                total.value = num1.value - num2.value
+                break;
+
+            case 'multiply':
+                total.value = num1.value * num2.value
+                break;
+
+            case 'divide':
+                total.value = num1.value / num2.value
+                break;
+
+            case 'modulus':
+                total.value = num1.value % num2.value
+                break;
+        
+            default:
+                total.value = ''
+                break;
+        }
+    }
 
 </script>
 <template>
@@ -19,7 +45,7 @@
         <button @click="calculate('modulus')">%</button>
         <br>
         <br>
-        <h3>Result : </h3>
+        <h3>Result : {{ total }}</h3>
     </div>
 </template>
 
